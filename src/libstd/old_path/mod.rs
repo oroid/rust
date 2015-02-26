@@ -309,7 +309,7 @@ pub trait GenericPath: Clone + GenericPathUnsafe {
     /// # #[cfg(windows)] fn foo() {}
     /// # #[cfg(unix)] fn foo() {
     /// let p = Path::new("abc/def/ghi");
-    /// assert_eq!(p.filename(), Some(b"ghi"));
+    /// assert_eq!(p.filename(), Some(&b"ghi"[..]));
     /// # }
     /// ```
     fn filename<'a>(&'a self) -> Option<&'a [u8]>;
@@ -343,7 +343,7 @@ pub trait GenericPath: Clone + GenericPathUnsafe {
     /// # #[cfg(windows)] fn foo() {}
     /// # #[cfg(unix)] fn foo() {
     /// let p = Path::new("/abc/def.txt");
-    /// assert_eq!(p.filestem(), Some(b"def"));
+    /// assert_eq!(p.filestem(), Some(&b"def"[..]));
     /// # }
     /// ```
     fn filestem<'a>(&'a self) -> Option<&'a [u8]> {
@@ -390,7 +390,7 @@ pub trait GenericPath: Clone + GenericPathUnsafe {
     /// # #[cfg(windows)] fn foo() {}
     /// # #[cfg(unix)] fn foo() {
     /// let p = Path::new("abc/def.txt");
-    /// assert_eq!(p.extension(), Some(b"txt"));
+    /// assert_eq!(p.extension(), Some(&b"txt"[..]));
     /// # }
     /// ```
     fn extension<'a>(&'a self) -> Option<&'a [u8]> {
