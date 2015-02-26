@@ -621,7 +621,7 @@ mod tests {
 
     #[test]
     fn test_read_line() {
-        let in_buf = b"a\nb\nc";
+        let in_buf: &[u8] = b"a\nb\nc";
         let mut reader = BufReader::with_capacity(2, in_buf);
         let mut s = String::new();
         reader.read_line(&mut s).unwrap();
@@ -639,7 +639,7 @@ mod tests {
 
     #[test]
     fn test_lines() {
-        let in_buf = b"a\nb\nc";
+        let in_buf: &[u8] = b"a\nb\nc";
         let reader = BufReader::with_capacity(2, in_buf);
         let mut it = reader.lines();
         assert_eq!(it.next(), Some(Ok("a".to_string())));
